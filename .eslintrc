@@ -4,6 +4,8 @@
     "linebreak-style":"off",
     "max-len":"off",
     "no-console":"off",
-    "object-curly-newline":"off"
+    "object-curly-newline":"off",
+    "no-confusing-arrow":"off",
+    "import/prefer-default-export": "off"
   }
 }
