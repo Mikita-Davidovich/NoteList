@@ -5,6 +5,7 @@ import Note from './note';
 import NoteContent from './noteContent';
 import useStyles from './styled';
 
+
 const MyNotes = ({ notActiveNote, changeNoteContent, initialNote, editPanel, openEditPannel, notesList, onChange, onUpdate, onCancel }) => {
   const classes = useStyles();
   return (
