@@ -3,10 +3,10 @@ import MyNotes from './myNotes';
 import { listOfNotes } from '../../assets/data/index';
 
 const myNotesContainer = () => {
-  const NOTE = 'Select note to display';
+  const TEXT = 'Select note to display';
   const [notActiveNote, setActiveStyle] = useState(0);
   const [initialNote, setActiveNote] = useState({
-    title: NOTE,
+    title: TEXT,
     description: '',
     date: '',
     id: null,
