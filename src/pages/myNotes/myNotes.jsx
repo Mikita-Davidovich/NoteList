@@ -6,12 +6,12 @@ import Note from './note';
 import NoteContent from './noteContent';
 import useStyles from './styled';
 
-const MyNotes = ({ notActive, changeText, defaultText }) => {
+const MyNotes = ({ notActive, changeNoteContent, defaultText }) => {
   const classes = useStyles();
   return (
     <Box className={classes.container}>
       <Box>
-        {NOTES_LIST.map((note) => <Note notActive={notActive} changeText={changeText} activeNote={note} key={note.key} />)}
+        {NOTES_LIST.map((note) => <Note notActive={notActive} changeNoteContent={changeNoteContent} activeNote={note} key={note.key} />)}
       </Box>
       <NoteContent text={defaultText} />
     </Box>
@@ -19,7 +19,7 @@ const MyNotes = ({ notActive, changeText, defaultText }) => {
 };
 MyNotes.propTypes = {
   notActive: PropTypes.number.isRequired,
-  changeText: PropTypes.func.isRequired,
+  changeNoteContent: PropTypes.func.isRequired,
   defaultText: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,

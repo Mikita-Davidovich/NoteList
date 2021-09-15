@@ -4,17 +4,17 @@ import { Box } from '@material-ui/core';
 import { cutSymbols } from '../../../utils';
 import useStyles from '../styled';
 
-const Note = ({ activeNote: { title, description, date, id }, notActive, changeText }) => {
+const Note = ({ activeNote: { title, description, date, id }, notActive, changeNoteContent }) => {
   const classes = useStyles();
   return (
     <Box
       className={notActive === id ? classes.activeNote : classes.note}
       onClick={() => {
-        changeText(title, description, date, id);
+        changeNoteContent(title, description, date, id);
       }}
     >
       <p className={classes.title}>{title}</p>
-      { description !== '' && <p>{cutSymbols(description)}</p>}
+      { description && <p>{cutSymbols(description)}</p>}
       <p className={classes.date}>{date}</p>
     </Box>
   );
@@ -28,7 +28,7 @@ Note.propTypes = {
     id: PropTypes.number.isRequired,
   }),
   notActive: PropTypes.number.isRequired,
-  changeText: PropTypes.func.isRequired,
+  changeNoteContent: PropTypes.func.isRequired,
 };
 Note.defaultProps = {
   activeNote: 'Hello',
