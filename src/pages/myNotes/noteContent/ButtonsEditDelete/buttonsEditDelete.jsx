@@ -8,7 +8,6 @@ import useStyles from '../../styled';
 
 const ButtonsEditDelete = ({ editPanel, openEditPannel, onChange, title, description, onUpdate, onCancel }) => {
   const classes = useStyles();
-  console.log(title);
   return (
     <div>
       <div className={classes.iconContainer}>
