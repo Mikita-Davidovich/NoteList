@@ -5,7 +5,7 @@ import Note from './note';
 import NoteContent from './noteContent';
 import useStyles from './styled';
 
-const MyNotes = ({ notActiveNote, changeNoteContent, initialNote, editPanel, openEditPannel, notesList, onChange, setLocalStoradge, onUpdate, onCancel }) => {
+const MyNotes = ({ notActiveNote, changeNoteContent, initialNote, editPanel, openEditPannel, notesList, onChange, onUpdate, onCancel }) => {
   const classes = useStyles();
   return (
     <Box className={classes.container}>
@@ -17,7 +17,6 @@ const MyNotes = ({ notActiveNote, changeNoteContent, initialNote, editPanel, ope
         editPanel={editPanel}
         openEditPannel={openEditPannel}
         onChange={onChange}
-        setLocalStoradge={setLocalStoradge}
         onUpdate={onUpdate}
         onCancel={onCancel}
       />
@@ -34,15 +33,19 @@ MyNotes.propTypes = {
   }),
   editPanel: PropTypes.bool.isRequired,
   openEditPannel: PropTypes.func.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  notesList: PropTypes.array.isRequired,
+  notesList: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+  })),
   onChange: PropTypes.func.isRequired,
-  setLocalStoradge: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
 
 };
 MyNotes.defaultProps = {
   initialNote: 'Hello',
+  notesList: 'Hi',
 };
 export default MyNotes;

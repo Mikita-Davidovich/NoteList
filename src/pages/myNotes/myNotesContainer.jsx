@@ -1,13 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import MyNotes from './myNotes';
 import { listOfNotes } from '../../assets/data/index';
 
 const myNotesContainer = () => {
   const NOTE = 'Select note to display';
-  const [editPanel, setEditPanel] = useState(false);
-  const openEditPannel = (flag) => {
-    setEditPanel(flag);
-  };
   const [notActiveNote, setActiveStyle] = useState(0);
   const [initialNote, setActiveNote] = useState({
     title: NOTE,
@@ -19,7 +15,10 @@ const myNotesContainer = () => {
     setActiveNote({ title, description, date, id });
     setActiveStyle(id);
   };
-
+  const [editPanel, setEditPanel] = useState(false);
+  const openEditPannel = (flag) => {
+    setEditPanel(flag);
+  };
   const onChange = (e) => {
     const { name, value } = e.target;
     setActiveNote((note) => ({ ...note, [name]: value }));
@@ -40,10 +39,6 @@ const myNotesContainer = () => {
     setActiveNote({ title, description, date, id });
     openEditPannel(false);
   };
-
-  // useEffect(() => {
-  //   localStorage.setItem('notes', JSON.stringify(notesList));
-  // });
 
   return (
     <MyNotes

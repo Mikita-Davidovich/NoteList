@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ButtonsEditDelete from './ButtonsEditDelete/buttonsEditDelete';
 import useStyles from '../styled';
 
-const NoteContent = ({ initialNote: { title, description, date }, editPanel, openEditPannel, onChange, setLocalStoradge, onUpdate, onCancel }) => {
+const NoteContent = ({ initialNote: { title, description, date }, editPanel, openEditPannel, onChange, onUpdate, onCancel }) => {
   const classes = useStyles();
   return (
     <Box className={classes.noteText}>
@@ -17,7 +17,6 @@ const NoteContent = ({ initialNote: { title, description, date }, editPanel, ope
         title={title}
         description={description}
         onChange={onChange}
-        setLocalStoradge={setLocalStoradge}
         onUpdate={onUpdate}
         onCancel={onCancel}
       />}
@@ -34,7 +33,6 @@ NoteContent.propTypes = {
   editPanel: PropTypes.bool.isRequired,
   openEditPannel: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  setLocalStoradge: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
 };

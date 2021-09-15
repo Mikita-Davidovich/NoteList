@@ -6,7 +6,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import EditNotesPanel from '../../editNotesPanel';
 import useStyles from '../../styled';
 
-const ButtonsEditDelete = ({ editPanel, openEditPannel, onChange, title, description, setLocalStoradge, onUpdate, onCancel }) => {
+const ButtonsEditDelete = ({ editPanel, openEditPannel, onChange, title, description, onUpdate, onCancel }) => {
   const classes = useStyles();
   console.log(title);
   return (
@@ -20,11 +20,9 @@ const ButtonsEditDelete = ({ editPanel, openEditPannel, onChange, title, descrip
         </Button>
         {editPanel === false ? null : <EditNotesPanel
           editPanel={editPanel}
-          openEditPannel={openEditPannel}
           onChange={onChange}
           title={title}
           description={description}
-          setLocalStoradge={setLocalStoradge}
           onUpdate={onUpdate}
           onCancel={onCancel}
         />}
@@ -39,7 +37,6 @@ ButtonsEditDelete.propTypes = {
   onChange: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  setLocalStoradge: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
 };

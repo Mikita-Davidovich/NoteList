@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { TextField, Button } from '@material-ui/core';
 import useStyles from '../styled';
 
-const EditNotesPanel = ({ openEditPannel, title, onChange, description, onUpdate, onCancel }) => {
+const EditNotesPanel = ({ title, onChange, description, onUpdate, onCancel }) => {
   const classes = useStyles();
   return (
     <div className={classes.inputsContainer}>
@@ -17,7 +17,6 @@ const EditNotesPanel = ({ openEditPannel, title, onChange, description, onUpdate
   );
 };
 EditNotesPanel.propTypes = {
-  openEditPannel: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
