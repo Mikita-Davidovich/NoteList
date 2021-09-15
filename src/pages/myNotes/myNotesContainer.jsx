@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import MyNotes from './myNotes';
 
 const myNotesContainer = () => {
-  const NOTE = 'Select note to display';
+  const TEXT = 'Select note to display';
   const [notActive, setActiveStyle] = useState(0);
-  const [defaultText, setActiveNote] = useState({
-    title: NOTE,
+  const [initialNote, setActiveNote] = useState({
+    title: TEXT,
     description: '',
     date: '',
   });
@@ -15,7 +15,7 @@ const myNotesContainer = () => {
   };
 
   return (
-    <MyNotes defaultText={defaultText} notActive={notActive} changeNoteContent={changeNoteContent} />
+    <MyNotes initialNote={initialNote} notActive={notActive} changeNoteContent={changeNoteContent} />
   );
 };
 
