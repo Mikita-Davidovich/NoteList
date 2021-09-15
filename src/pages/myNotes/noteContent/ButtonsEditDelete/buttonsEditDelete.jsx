@@ -9,25 +9,22 @@ import useStyles from '../../styled';
 const ButtonsEditDelete = ({ editPanel, openEditPannel, onChange, title, description, onUpdate, onCancel }) => {
   const classes = useStyles();
   return (
-    <div>
-      <div className={classes.iconContainer}>
-        <Button className={classes.buttonsEditDelete} variant="contained" color="primary" onClick={() => openEditPannel(true)}>
-          <EditIcon className={classes.icons} />
-        </Button>
-        <Button className={classes.buttonsEditDelete} variant="contained" color="primary">
-          <DeleteIcon className={classes.icons} />
-        </Button>
-        {editPanel === false ? null : <EditNotesPanel
-          editPanel={editPanel}
-          onChange={onChange}
-          title={title}
-          description={description}
-          onUpdate={onUpdate}
-          onCancel={onCancel}
-        />}
-      </div>
+    <div className={classes.iconContainer}>
+      <Button className={classes.buttonsEditDelete} variant="contained" color="primary" onClick={() => openEditPannel(true)}>
+        <EditIcon className={classes.icons} />
+      </Button>
+      <Button className={classes.buttonsEditDelete} variant="contained" color="primary">
+        <DeleteIcon className={classes.icons} />
+      </Button>
+      {editPanel === false ? null : <EditNotesPanel
+        editPanel={editPanel}
+        onChange={onChange}
+        title={title}
+        description={description}
+        onUpdate={onUpdate}
+        onCancel={onCancel}
+      />}
     </div>
-
   );
 };
 ButtonsEditDelete.propTypes = {

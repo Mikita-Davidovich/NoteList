@@ -49,7 +49,6 @@ const useStyles = makeStyles({
   },
   iconContainer: {
     display: 'flex',
-    justifyContent: 'space-between',
     flexDirection: 'column',
   },
   icons: {
