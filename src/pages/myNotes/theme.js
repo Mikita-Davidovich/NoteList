@@ -4,7 +4,7 @@ export default createMuiTheme({
   overrides: {
     MuiButton: {
       root: {
-        margin: '10px 0',
+        margin: '10px 20px 0 0',
       },
     },
     MuiFormControl: {
