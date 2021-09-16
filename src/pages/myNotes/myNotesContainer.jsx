@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import MyNotes from './myNotes';
+import theme from './theme';
 import { listOfNotes } from '../../assets/data/index';
 
 const myNotesContainer = () => {
@@ -41,17 +43,19 @@ const myNotesContainer = () => {
   };
 
   return (
-    <MyNotes
-      initialNote={initialNote}
-      notActiveNote={notActiveNote}
-      changeNoteContent={changeNoteContent}
-      openEditPannel={openEditPannel}
-      editPanel={editPanel}
-      notesList={notesList}
-      onChange={onChange}
-      onUpdate={onUpdate}
-      onCancel={onCancel}
-    />
+    <MuiThemeProvider theme={theme}>
+      <MyNotes
+        initialNote={initialNote}
+        notActiveNote={notActiveNote}
+        changeNoteContent={changeNoteContent}
+        openEditPannel={openEditPannel}
+        editPanel={editPanel}
+        notesList={notesList}
+        onChange={onChange}
+        onUpdate={onUpdate}
+        onCancel={onCancel}
+      />
+    </MuiThemeProvider>
   );
 };
 
