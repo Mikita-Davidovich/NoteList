@@ -5,12 +5,12 @@ import ButtonsEditDelete from './ButtonsEditDelete/buttonsEditDelete';
 import useStyles from '../styled';
 
 const NoteContent = ({ initialNote: { title, description, date }, editPanel, openEditPannel, onChange, onUpdate, onCancel }) => {
-  const classes = useStyles();
+  const styles = useStyles();
   return (
-    <Box className={classes.noteText}>
-      <p className={classes.title}>{title}</p>
+    <Box className={styles.noteText}>
+      <p className={styles.title}>{title}</p>
       <p>{description}</p>
-      <p className={classes.date}>{date}</p>
+      <p className={styles.date}>{date}</p>
       {title === 'Select note to display' ? null : <ButtonsEditDelete
         editPanel={editPanel}
         openEditPannel={openEditPannel}

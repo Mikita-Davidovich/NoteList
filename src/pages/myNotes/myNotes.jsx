@@ -6,9 +6,9 @@ import NoteContent from './noteContent';
 import useStyles from './styled';
 
 const MyNotes = ({ notActiveNote, changeNoteContent, initialNote, editPanel, openEditPannel, notesList, onChange, onUpdate, onCancel }) => {
-  const classes = useStyles();
+  const styles = useStyles();
   return (
-    <Box className={classes.container}>
+    <Box className={styles.container}>
       <Box>
         {notesList.map((note) => <Note notActive={notActiveNote} changeNoteContent={changeNoteContent} activeNote={note} key={note.id} />)}
       </Box>

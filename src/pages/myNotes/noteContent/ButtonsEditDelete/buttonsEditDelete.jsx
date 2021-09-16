@@ -7,14 +7,14 @@ import EditNotesPanel from '../../editNotesPanel';
 import useStyles from '../../styled';
 
 const ButtonsEditDelete = ({ editPanel, openEditPannel, onChange, title, description, onUpdate, onCancel }) => {
-  const classes = useStyles();
+  const styles = useStyles();
   return (
-    <div className={classes.iconContainer}>
-      <Button className={classes.buttonsEditDelete} variant="contained" color="primary" onClick={() => openEditPannel(true)}>
-        <EditIcon className={classes.icons} />
+    <div className={styles.iconContainer}>
+      <Button className={styles.buttonsEditDelete} variant="contained" color="primary" onClick={() => openEditPannel(true)}>
+        <EditIcon className={styles.icons} />
       </Button>
-      <Button className={classes.buttonsEditDelete} variant="contained" color="primary">
-        <DeleteIcon className={classes.icons} />
+      <Button className={styles.buttonsEditDelete} variant="contained" color="primary">
+        <DeleteIcon className={styles.icons} />
       </Button>
       {editPanel === false ? null : <EditNotesPanel
         editPanel={editPanel}
