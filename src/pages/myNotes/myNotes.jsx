@@ -1,32 +1,51 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Box } from '@material-ui/core';
-import { NOTES_LIST } from '../../assets/data/index';
 import Note from './note';
 import NoteContent from './noteContent';
 import useStyles from './styled';
 
-const MyNotes = ({ notActive, changeNoteContent, initialNote }) => {
-  const classes = useStyles();
+const MyNotes = ({ notActiveNote, changeNoteContent, initialNote, editPanel, openEditPannel, notesList, onChange, onUpdate, onCancel }) => {
+  const styles = useStyles();
   return (
-    <Box className={classes.container}>
+    <Box className={styles.container}>
       <Box>
-        {NOTES_LIST.map((note) => <Note notActive={notActive} changeNoteContent={changeNoteContent} activeNote={note} key={note.key} />)}
+        {notesList.map((note) => <Note notActive={notActiveNote} changeNoteContent={changeNoteContent} activeNote={note} key={note.id} />)}
       </Box>
-      <NoteContent initialNote={initialNote} />
+      <NoteContent
+        initialNote={initialNote}
+        editPanel={editPanel}
+        openEditPannel={openEditPannel}
+        onChange={onChange}
+        onUpdate={onUpdate}
+        onCancel={onCancel}
+      />
     </Box>
   );
 };
 MyNotes.propTypes = {
-  notActive: PropTypes.number.isRequired,
+  notActiveNote: PropTypes.number.isRequired,
   changeNoteContent: PropTypes.func.isRequired,
   initialNote: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
   }),
+  editPanel: PropTypes.bool.isRequired,
+  openEditPannel: PropTypes.func.isRequired,
+  notesList: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+  })),
+  onChange: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+
 };
 MyNotes.defaultProps = {
   initialNote: 'Hello',
+  notesList: 'Hi',
 };
 export default MyNotes;

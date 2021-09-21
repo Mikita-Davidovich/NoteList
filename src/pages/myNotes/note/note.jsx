@@ -5,17 +5,17 @@ import { cutSymbols } from '../../../utils';
 import useStyles from '../styled';
 
 const Note = ({ activeNote: { title, description, date, id }, notActive, changeNoteContent }) => {
-  const classes = useStyles();
+  const styles = useStyles();
   return (
     <Box
-      className={notActive === id ? classes.activeNote : classes.note}
+      className={notActive === id ? styles.activeNote : styles.note}
       onClick={() => {
         changeNoteContent(title, description, date, id);
       }}
     >
-      <p className={classes.title}>{title}</p>
+      <p className={styles.title}>{title}</p>
       { description && <p>{cutSymbols(description)}</p>}
-      <p className={classes.date}>{date}</p>
+      <p className={styles.date}>{date}</p>
     </Box>
   );
 };

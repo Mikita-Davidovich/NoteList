@@ -6,6 +6,12 @@
     "no-console":"off",
     "object-curly-newline":"off",
     "no-confusing-arrow":"off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "react/jsx-wrap-multilines": "off",
+    "react/jsx-closed-tag-location": "off",
+    "no-unused-vars":"off"
+  },
+  "env": {
+    "browser": true
   }
 }

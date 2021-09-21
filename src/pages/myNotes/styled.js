@@ -47,6 +47,27 @@ const useStyles = makeStyles({
     padding: '30px',
     width: '50%',
   },
+  iconContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  icons: {
+    cursor: 'pointer',
+  },
+  inputsContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  inputTitle: {
+    margin: '20px 0',
+  },
+  buttonsEditDelete: {
+    margin: '10px 0',
+    width: '100px',
+  },
+  buttonsUpdateExit: {
+    margin: '20px 20px 0 0',
+  },
 });
 
 export default useStyles;
