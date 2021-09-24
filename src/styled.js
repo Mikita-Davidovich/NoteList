@@ -36,6 +36,7 @@ const useStyles = makeStyles({
   },
   description: {
     wordWrap: 'break-word',
+    width: '300px',
   },
   date: {
     fontSize: '10px',
