@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Box } from '@material-ui/core';
 import { cutSymbols } from '../../../utils';
-import useStyles from '../styled';
+import useStyles from '../../../styled';
 
 const Note = ({ activeNote: { title, description, date, id }, notActive, changeNoteContent }) => {
   const styles = useStyles();
