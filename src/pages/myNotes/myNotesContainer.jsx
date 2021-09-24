@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import MyNotes from './myNotes';
-import theme from './theme';
 import { listOfNotes } from '../../assets/data/index';
+import useStyles from '../../styled';
 
-const myNotesContainer = () => {
+const myNotesContainer = ({ openNavBar }) => {
+  const styles = useStyles();
   const TEXT = 'Select note to display';
   const [notActiveNote, setActiveStyle] = useState(0);
   const [initialNote, setActiveNote] = useState({
@@ -43,7 +43,7 @@ const myNotesContainer = () => {
   };
 
   return (
-    <MuiThemeProvider theme={theme}>
+    <div className={styles.wrapper}>
       <MyNotes
         initialNote={initialNote}
         notActiveNote={notActiveNote}
@@ -54,8 +54,9 @@ const myNotesContainer = () => {
         onChange={onChange}
         onUpdate={onUpdate}
         onCancel={onCancel}
+        openNavBar={openNavBar}
       />
-    </MuiThemeProvider>
+    </div>
   );
 };
 

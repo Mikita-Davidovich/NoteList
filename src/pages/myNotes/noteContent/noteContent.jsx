@@ -1,16 +1,18 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import ButtonsEditDelete from './ButtonsEditDelete/buttonsEditDelete';
-import useStyles from '../styled';
+import ButtonsEditDelete from './ButtonsEditDelete';
+import useStyles from '../../../styled';
 
 const NoteContent = ({ initialNote: { title, description, date }, editPanel, openEditPannel, onChange, onUpdate, onCancel }) => {
   const styles = useStyles();
   return (
-    <Box className={styles.noteText}>
-      <p className={styles.title}>{title}</p>
-      <p>{description}</p>
-      <p className={styles.date}>{date}</p>
+    <div className={styles.noteTextEditPanel}>
+      <div className={styles.noteText}>
+        <p className={styles.title}>{title}</p>
+        <p className={styles.description}>{description}</p>
+        <p className={styles.date}>{date}</p>
+      </div>
       {title === 'Select note to display' ? null : <ButtonsEditDelete
         editPanel={editPanel}
         openEditPannel={openEditPannel}
@@ -20,7 +22,7 @@ const NoteContent = ({ initialNote: { title, description, date }, editPanel, ope
         onUpdate={onUpdate}
         onCancel={onCancel}
       />}
-    </Box>
+    </div>
   );
 };
 
