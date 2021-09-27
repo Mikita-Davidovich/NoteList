@@ -18,10 +18,10 @@ const App = () => {
     <MuiThemeProvider theme={theme}>
       <BrowserRouter>
         <Switch>
-          <Route path={PATH_NOT_FOUND} component={PageNotFound} />
           <Route path={PATH_MY_NOTES} exact component={() => <MyNotes isNavBarOpen={isNavBarOpen} openNavBar={openNavBar} />} />
           <Route path={PATH_ABOUT} component={() => <About isNavBarOpen={isNavBarOpen} openNavBar={openNavBar} />} />
           <Route path={PATH_SHARED_NOTES} component={() => <SharedNotes isNavBarOpen={isNavBarOpen} openNavBar={openNavBar} />} />
+          <Route path={PATH_NOT_FOUND} component={PageNotFound} />
           <Redirect to={PATH_NOT_FOUND} />
         </Switch>
         <NavBar isNavBarOpen={isNavBarOpen} openNavBar={openNavBar} />
