@@ -16,7 +16,7 @@ const App = () => {
   };
   return (
     <MuiThemeProvider theme={theme}>
-      <BrowserRouter>
+      <BrowserRouter basename="/notes">
         <Switch>
           <Route path={PATH_NOT_FOUND} component={PageNotFound} />
           <Route path={PATH_MY_NOTES} exact component={() => <MyNotes isNavBarOpen={isNavBarOpen} openNavBar={openNavBar} />} />
