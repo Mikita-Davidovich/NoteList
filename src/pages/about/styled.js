@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Box } from '@material-ui/core';
+
 import aboutBackGround from 'assets/images/aboutBackGround.jpg';
 
 export const StyledBox = styled(Box)({

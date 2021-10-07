@@ -12,4 +12,5 @@ export const InputsContainer = styled('div')({
 export const ButtonsUpdateExit = styled('div')({
   display: 'flex',
   justifyContent: 'space-between',
+  marginTop: '10px',
 });

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Registration from './registration';
 
 const RegistrationContainer = () => {
@@ -10,10 +11,12 @@ const RegistrationContainer = () => {
     password: '',
     confirmPassword: '',
   };
-  const onSubmit = (values) => {
+  const onSubmit = (values, onSubmitProps) => {
     console.log(values);
+    setTimeout(() => {
+      onSubmitProps.resetForm();
+    }, 2000);
   };
-  console.log(123, INITIAL_REGISTRATION_VALUE);
   return (
     <Registration initialValues={INITIAL_REGISTRATION_VALUE} onSubmit={onSubmit} />
   );
