@@ -1,43 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Box } from '@material-ui/core';
+
+import Layout from 'shared/layout/layout';
+
+import EditNotesPanel from './editNotesPanel';
 import Note from './note';
 import NoteContent from './noteContent';
-import useStyles from '../../styled';
-import Header from '../../shared/header';
-import EditNotesPanel from './editNotesPanel/editNotesPanel';
+import { NotesWrapper } from './styled';
 
-const MyNotes = ({ notActiveNote, changeNoteContent, initialNote, editPanel, openEditPannel, notesList, onChange, onUpdate, onCancel, openNavBar }) => {
-  const styles = useStyles();
-  return (
-    <>
-      <Header openNavBar={openNavBar} />
-      <Box className={styles.container}>
-        <Box>
-          {notesList.map((note) => <Note notActive={notActiveNote} changeNoteContent={changeNoteContent} activeNote={note} key={note.id} />)}
-        </Box>
-        <Box>
-          <NoteContent
-            initialNote={initialNote}
-            editPanel={editPanel}
-            openEditPannel={openEditPannel}
-            onChange={onChange}
-            onUpdate={onUpdate}
-            onCancel={onCancel}
-          />
-          {editPanel === false ? null : <EditNotesPanel
-            editPanel={editPanel}
-            onChange={onChange}
-            title={initialNote.title}
-            description={initialNote.description}
-            onUpdate={onUpdate}
-            onCancel={onCancel}
-          />}
-        </Box>
+const MyNotes = ({ notActiveNote, changeNoteContent, initialNote, editPanel, openEditPannel, notesList, onChange, onUpdate, onCancel }) => (
+  <Layout>
+    <NotesWrapper>
+      <Box>
+        {notesList.map((note) => <Note notActive={notActiveNote} changeNoteContent={changeNoteContent} activeNote={note} key={note.id} />)}
       </Box>
-    </>
-  );
-};
+      <Box>
+        <NoteContent
+          initialNote={initialNote}
+          editPanel={editPanel}
+          openEditPannel={openEditPannel}
+          onChange={onChange}
+          onUpdate={onUpdate}
+          onCancel={onCancel}
+        />
+        {editPanel && <EditNotesPanel
+          editPanel={editPanel}
+          onChange={onChange}
+          title={initialNote.title}
+          description={initialNote.description}
+          onUpdate={onUpdate}
+          onCancel={onCancel}
+        />}
+      </Box>
+    </NotesWrapper>
+  </Layout>
+);
 MyNotes.propTypes = {
   notActiveNote: PropTypes.number.isRequired,
   changeNoteContent: PropTypes.func.isRequired,
@@ -57,8 +55,6 @@ MyNotes.propTypes = {
   onChange: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
-  openNavBar: PropTypes.func.isRequired,
-
 };
 MyNotes.defaultProps = {
   initialNote: 'Hello',

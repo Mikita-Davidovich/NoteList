@@ -33,11 +33,19 @@ export default createTheme({
       colorPrimary: {
         backgroundColor: '#000',
       },
+      positionFixed: {
+        position: 'relative',
+      },
     },
     MuiContainer: {
       root: {
         marginLeft: '0',
         marginRight: '0',
+        display: 'flex',
+        '@media (min-width: 600px)': {
+          paddingLeft: '16px',
+          paddingRight: 0,
+        },
       },
     },
     MuiPaper: {
@@ -48,6 +56,16 @@ export default createTheme({
     MuiList: {
       padding: {
         paddingTop: '55px',
+      },
+    },
+    MuiToolbar: {
+      gutters: {
+        paddingLeft: 0,
+        paddingRight: 0,
+        '@media (min-width: 600px)': {
+          paddingLeft: 0,
+          paddingRight: 0,
+        },
       },
     },
   },

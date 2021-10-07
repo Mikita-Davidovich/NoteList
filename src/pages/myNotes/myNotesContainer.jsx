@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import MyNotes from './myNotes';
-import { listOfNotes } from '../../assets/data/index';
-import useStyles from '../../styled';
 
-const myNotesContainer = ({ openNavBar }) => {
-  const styles = useStyles();
+import listOfNotes from 'assets/data';
+
+import { Wrapper } from './styled';
+import MyNotes from './myNotes';
+
+const myNotesContainer = () => {
   const TEXT = 'Select note to display';
   const [notActiveNote, setActiveStyle] = useState(0);
   const [initialNote, setActiveNote] = useState({
@@ -43,7 +44,7 @@ const myNotesContainer = ({ openNavBar }) => {
   };
 
   return (
-    <div className={styles.wrapper}>
+    <Wrapper>
       <MyNotes
         initialNote={initialNote}
         notActiveNote={notActiveNote}
@@ -54,9 +55,8 @@ const myNotesContainer = ({ openNavBar }) => {
         onChange={onChange}
         onUpdate={onUpdate}
         onCancel={onCancel}
-        openNavBar={openNavBar}
       />
-    </div>
+    </Wrapper>
   );
 };
 

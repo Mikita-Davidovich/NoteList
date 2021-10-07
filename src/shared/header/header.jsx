@@ -1,28 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AppBar, Container, IconButton, Toolbar } from '@material-ui/core';
+import { AppBar, Container, Toolbar } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import useStyles from '../../styled';
 
-const Header = ({ openNavBar }) => {
-  const styles = useStyles();
-  return (
-    <AppBar className={styles.header}>
-      <Container fixed>
-        <Toolbar>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            onClick={() => openNavBar(true)}
-          >
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
-      </Container>
-    </AppBar>
-  );
-};
+import HeaderMenu from './headerMenu';
+import { BurgerMenuButton } from './styled';
+
+const Header = ({ openNavBar }) => (
+  <AppBar>
+    <Container fixed>
+      <Toolbar>
+        <BurgerMenuButton
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+          onClick={() => openNavBar(true)}
+        >
+          <MenuIcon />
+        </BurgerMenuButton>
+      </Toolbar>
+      <HeaderMenu />
+    </Container>
+  </AppBar>
+);
 Header.propTypes = {
   openNavBar: PropTypes.func.isRequired,
 };

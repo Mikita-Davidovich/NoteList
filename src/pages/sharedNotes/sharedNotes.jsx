@@ -1,18 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import useStyles from '../../styled';
-import Header from '../../shared/header';
 
-const SharedNotes = ({ openNavBar }) => {
-  const styles = useStyles();
-  return (
-    <div className={styles.wrapper}>
-      <Header openNavBar={openNavBar} />
-    </div>
-  );
-};
-SharedNotes.propTypes = {
-  openNavBar: PropTypes.func.isRequired,
-};
+import Layout from 'shared/layout';
+
+import { Wrapper } from './styled';
+
+const SharedNotes = () => (
+  <Wrapper>
+    <Layout />
+  </Wrapper>
+);
 
 export default SharedNotes;
