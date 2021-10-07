@@ -26,7 +26,7 @@ export default createTheme({
     },
     MuiFormControl: {
       root: {
-        margin: '20px 0',
+        margin: '10px 0',
       },
     },
     MuiAppBar: {
