@@ -2,13 +2,14 @@ import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 
-import MyNotes from './pages/myNotes';
-import About from './pages/about';
-import SharedNotes from './pages/sharedNotes';
-import PageNotFound from './pages/pageNotFound';
-import { PATH_MY_NOTES, PATH_SHARED_NOTES, PATH_ABOUT, PATH_NOT_FOUND, PATH_ROOT, PATH_REGISTRATION } from './assets/paths';
-import theme from './theme';
-import Registration from 'pages/registration';
+import MyNotes from 'pages/MyNotes';
+import About from 'pages/About';
+import SharedNotes from 'pages/SharedNotes';
+import PageNotFound from 'pages/PageNotFound';
+import { PATH_MY_NOTES, PATH_SHARED_NOTES, PATH_ABOUT, PATH_NOT_FOUND, PATH_ROOT, PATH_REGISTRATION, PATH_LOGIN } from 'assets/paths';
+import Registration from 'pages/Auth/Registration';
+import Login from 'pages/Auth/Login';
+import theme from 'theme';
 
 const App = () => (
   <MuiThemeProvider theme={theme}>
@@ -17,6 +18,7 @@ const App = () => (
         <Route exact path={PATH_ROOT}>
           <Redirect to={PATH_MY_NOTES} />
         </Route>
+        <Route path={PATH_LOGIN} component={Login} />
         <Route path={PATH_REGISTRATION} component={Registration} />
         <Route path={PATH_MY_NOTES} exact component={MyNotes} />
         <Route path={PATH_ABOUT} component={About} />

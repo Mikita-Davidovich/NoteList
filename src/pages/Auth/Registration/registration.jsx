@@ -5,15 +5,15 @@ import { Grid } from '@material-ui/core';
 
 import { VALIDATION_SHEMA_REGISTRATION } from 'assets/validationShema';
 import TextFieldWrapper from 'shared/FormsUI/TextField';
-import DateTimePicker from 'shared/FormsUI/dateTimePicker';
-import ButtonWrapper from 'shared/FormsUI/button';
+import DateTimePicker from 'shared/FormsUI/DateTimePicker';
+import ButtonWrapper from 'shared/FormsUI/Button';
 import { PATH_LOGIN } from 'assets/paths';
 
-import { Title, RegistrationWrapper, StyledContainer, LinkWrapper, NavLinkLogin } from './styled';
+import { Title, Wrapper, StyledContainer, LinkWrapper, NavLinkLogin } from '../styled';
 
 const Registration = ({ initialValues, onSubmit }) => (
-  <RegistrationWrapper>
-    <Title item xs={12}>Registration</Title>
+  <Wrapper>
+    <Title>Registration</Title>
     <Grid item xs={12}>
       <StyledContainer maxWidth="md">
         <Formik
@@ -52,10 +52,10 @@ const Registration = ({ initialValues, onSubmit }) => (
       </StyledContainer>
       <LinkWrapper>
         If you already have an account click
-        <NavLinkLogin to={PATH_LOGIN}>Login</NavLinkLogin>
+        <NavLinkLogin to={PATH_LOGIN}>Sign In</NavLinkLogin>
       </LinkWrapper>
     </Grid>
-  </RegistrationWrapper>
+  </Wrapper>
 );
 
 Registration.propTypes = {
@@ -63,6 +63,9 @@ Registration.propTypes = {
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    confirmPassword: PropTypes.string.isRequired,
+    dateOfBirth: PropTypes.string.isRequired,
   }),
   onSubmit: PropTypes.func.isRequired,
 };

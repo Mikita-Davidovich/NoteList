@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { AppBar, Container, Toolbar } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import HeaderMenu from './headerMenu';
+import HeaderMenu from './HeaderMenu';
 import { BurgerMenuButton } from './styled';
 
 const Header = ({ openNavBar }) => (

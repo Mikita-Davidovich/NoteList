@@ -16,7 +16,7 @@ export const StyledContainer = styled(Container)({
   margin: '0 auto !important',
 });
 
-export const RegistrationWrapper = styled(Grid)({
+export const Wrapper = styled(Grid)({
   backgroundColor: '#3AAFA9',
   height: '100vh',
 });
@@ -25,6 +25,13 @@ export const LinkWrapper = styled('div')({
   display: 'flex',
   justifyContent: 'center',
   marginTop: '10px',
+});
+
+export const LinkWrapperLogin = styled('div')({
+  display: 'flex',
+  justifyContent: 'center',
+  marginTop: '10px',
+  marginLeft: '15px',
 });
 
 export const NavLinkLogin = styled(NavLink)({

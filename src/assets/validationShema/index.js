@@ -1,10 +1,10 @@
 import * as Yup from 'yup';
 
-export const validationShemaLogIn = Yup.object({
+export const VALIDATION_SHEMA_LOGIN = Yup.object({
   email: Yup.string().email('Wrong format!').required('Required!'),
   password: Yup.string().required('Required!').matches(/(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!]/g, 'Use letters(a-z A-Z) and numbers')
-    .min(10, 'Password must be at least 10 characters long')
-    .max(18, 'Password must not exceed 18 characters'),
+    .min(10, 'Password must be at least 8 characters long')
+    .max(18, 'Password must not exceed 16 characters'),
 });
 
 export const VALIDATION_SHEMA_REGISTRATION = Yup.object({

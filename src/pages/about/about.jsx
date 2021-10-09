@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 
-import Layout from 'shared/layout/layout';
+import Layout from 'shared/Layout/layout';
 
 import { StyledBox, Description, Headers } from './styled';
 

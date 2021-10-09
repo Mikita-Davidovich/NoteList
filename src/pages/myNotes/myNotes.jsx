@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Box } from '@material-ui/core';
 
-import Layout from 'shared/layout/layout';
+import Layout from 'shared/Layout/layout';
 
-import EditNotesPanel from './editNotesPanel';
-import Note from './note';
-import NoteContent from './noteContent';
+import EditNotesPanel from './EditNotesPanel';
+import Note from './Note';
+import NoteContent from './NoteContent';
 import { NotesWrapper } from './styled';
 
 const MyNotes = ({ notActiveNote, changeNoteContent, initialNote, editPanel, openEditPannel, notesList, onChange, onUpdate, onCancel }) => (
