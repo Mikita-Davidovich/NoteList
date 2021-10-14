@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ButtonsEditDelete from './ButtonsEditDelete';
 import { Title, Description, Date, Wrapper, EditPanel } from './styled';
 
-const NoteContent = ({ initialNote: { title, description, date }, editPanel, openEditPannel, onChange, onUpdate, onCancel }) => (
+const NoteContent = ({ initialNote: { title, description, date }, editPanel, openEditPannel, onChange, onUpdate, onCancel, closeNoteContent, deleteNote }) => (
   <EditPanel>
     <Wrapper>
       <Title>{title}</Title>
@@ -19,6 +19,8 @@ const NoteContent = ({ initialNote: { title, description, date }, editPanel, ope
       onChange={onChange}
       onUpdate={onUpdate}
       onCancel={onCancel}
+      closeNoteContent={closeNoteContent}
+      deleteNote={deleteNote}
     />}
   </EditPanel>
 );
@@ -34,6 +36,8 @@ NoteContent.propTypes = {
   onChange: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
+  closeNoteContent: PropTypes.func.isRequired,
+  deleteNote: PropTypes.func.isRequired,
 };
 
 NoteContent.defaultProps = {

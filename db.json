@@ -1,0 +1,34 @@
+{
+  "notes": [
+    {
+      "title": "Greetings",
+      "description": "Hello! My name isReact",
+      "date": "Monday 2 September",
+      "id": 1
+    },
+    {
+      "title": "What i can do today?",
+      "description": "Clear house , study all day , sleep 3 hours",
+      "date": "Friday 5 November",
+      "id": 2
+    },
+    {
+      "title": "Learn material-ui",
+      "description": "Try to deal with the library material-ui",
+      "date": "Sunday 3 June",
+      "id": 3
+    },
+    {
+      "title": "Learn react-query and axios:-)",
+      "description": "Try to understand this librares",
+      "date": "Wednesday 13 October",
+      "id": 4
+    },
+    {
+      "title": "Visit the dentist",
+      "description": "Call to clarify free time and sign up",
+      "date": "Thursday 14 October",
+      "id": 5
+    }
+  ]
+}

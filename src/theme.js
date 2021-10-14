@@ -5,6 +5,12 @@ export default createTheme({
     MuiButton: {
       root: {
         margin: '0 20px 0 0',
+        color: '#fff',
+        backgroundColor: '#000',
+        '&:hover': {
+          backgroundColor: '#fff',
+          color: '#000',
+        },
       },
       containedPrimary: {
         backgroundColor: '#000',

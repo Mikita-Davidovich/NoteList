@@ -6,7 +6,9 @@ import { Wrapper } from './styled';
 
 const SharedNotes = () => (
   <Wrapper>
-    <Layout />
+    <Layout>
+      <div>The information will be soon</div>
+    </Layout>
   </Wrapper>
 );
 
