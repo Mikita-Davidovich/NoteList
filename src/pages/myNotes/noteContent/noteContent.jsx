@@ -4,24 +4,27 @@ import PropTypes from 'prop-types';
 import ButtonsEditDelete from './ButtonsEditDelete';
 import { Title, Description, Date, Wrapper, EditPanel } from './styled';
 
-const NoteContent = ({ initialNote: { title, description, date }, editPanel, openEditPannel, onChange, onUpdate, onCancel }) => (
-  <EditPanel>
-    <Wrapper>
-      <Title>{title}</Title>
-      <Description>{description}</Description>
-      <Date>{date}</Date>
-    </Wrapper>
-    {title === 'Select note to display' ? null : <ButtonsEditDelete
-      editPanel={editPanel}
-      openEditPannel={openEditPannel}
-      title={title}
-      description={description}
-      onChange={onChange}
-      onUpdate={onUpdate}
-      onCancel={onCancel}
-    />}
-  </EditPanel>
-);
+const NoteContent = ({ initialNote: { title, description, date }, isEditPanel, openEditPannel, onChange, onUpdate, onCancel }) => {
+  const isDefaultText = title === 'Select note to display';
+  return (
+    <EditPanel>
+      <Wrapper>
+        <Title>{title}</Title>
+        <Description>{description}</Description>
+        <Date>{date}</Date>
+      </Wrapper>
+      {!isDefaultText && <ButtonsEditDelete
+        isEditPanel={isEditPanel}
+        openEditPannel={openEditPannel}
+        title={title}
+        description={description}
+        onChange={onChange}
+        onUpdate={onUpdate}
+        onCancel={onCancel}
+      />}
+    </EditPanel>
+  );
+};
 
 NoteContent.propTypes = {
   initialNote: PropTypes.shape({
@@ -29,7 +32,7 @@ NoteContent.propTypes = {
     description: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
   }),
-  editPanel: PropTypes.bool.isRequired,
+  isEditPanel: PropTypes.bool.isRequired,
   openEditPannel: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,

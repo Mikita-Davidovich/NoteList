@@ -2,10 +2,10 @@ import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 
-import MyNotes from './pages/myNotes';
-import About from './pages/about';
-import SharedNotes from './pages/sharedNotes';
-import PageNotFound from './pages/pageNotFound';
+import MyNotes from './pages/MyNotes';
+import About from './pages/About';
+import SharedNotes from './pages/SharedNotes';
+import PageNotFound from './pages/PageNotFound';
 import { PATH_MY_NOTES, PATH_SHARED_NOTES, PATH_ABOUT, PATH_NOT_FOUND, PATH_ROOT } from './assets/paths';
 import theme from './theme';
 

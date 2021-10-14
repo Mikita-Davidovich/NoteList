@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
-import listOfNotes from 'assets/data';
+import { listOfNotes } from 'assets/data';
 
 import { Wrapper } from './styled';
 import MyNotes from './myNotes';
 
 const myNotesContainer = () => {
   const TEXT = 'Select note to display';
-  const [notActiveNote, setActiveStyle] = useState(0);
+  const [isActive, setActiveStyle] = useState(0);
   const [initialNote, setActiveNote] = useState({
     title: TEXT,
     description: '',
@@ -18,7 +18,7 @@ const myNotesContainer = () => {
     setActiveNote({ title, description, date, id });
     setActiveStyle(id);
   };
-  const [editPanel, setEditPanel] = useState(false);
+  const [isEditPanel, setEditPanel] = useState(false);
   const openEditPannel = (flag) => {
     setEditPanel(flag);
   };
@@ -47,10 +47,10 @@ const myNotesContainer = () => {
     <Wrapper>
       <MyNotes
         initialNote={initialNote}
-        notActiveNote={notActiveNote}
+        isActive={isActive}
         changeNoteContent={changeNoteContent}
         openEditPannel={openEditPannel}
-        editPanel={editPanel}
+        isEditPanel={isEditPanel}
         notesList={notesList}
         onChange={onChange}
         onUpdate={onUpdate}
