@@ -1,1 +1,2 @@
-Click [NoteList](https://mikita-davidovich.github.io/notes/) to see my work
+Click [NoteList](https://mikita-davidovich.github.io/Notes-List/) to see my work
+

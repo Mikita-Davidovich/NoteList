@@ -1,24 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box } from '@material-ui/core';
-import { cutSymbols } from '../../../utils';
-import useStyles from '../styled';
 
-const Note = ({ activeNote: { title, description, date, id }, notActive, changeNoteContent }) => {
-  const styles = useStyles();
-  return (
-    <Box
-      className={notActive === id ? styles.activeNote : styles.note}
-      onClick={() => {
+import { cutSymbols } from 'utils';
+
+import { Title, Date, DefaultNote, ActiveNote } from './styled';
+
+const Note = ({ activeNote: { title, description, date, id }, isActive, changeNoteContent }) => (
+  <>
+    {isActive === id
+      ? <ActiveNote onClick={() => {
         changeNoteContent(title, description, date, id);
       }}
-    >
-      <p className={styles.title}>{title}</p>
-      { description && <p>{cutSymbols(description)}</p>}
-      <p className={styles.date}>{date}</p>
-    </Box>
-  );
-};
+      >
+        <Title>{title}</Title>
+        { description && <p>{cutSymbols(description)}</p>}
+        <Date>{date}</Date>
+      </ActiveNote>
+      : <DefaultNote onClick={() => {
+        changeNoteContent(title, description, date, id);
+      }}
+      >
+        <Title>{title}</Title>
+        { description && <p>{cutSymbols(description)}</p>}
+        <Date>{date}</Date>
+      </DefaultNote>}
+  </>
+);
 
 Note.propTypes = {
   activeNote: PropTypes.shape({
@@ -27,7 +34,7 @@ Note.propTypes = {
     date: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
   }),
-  notActive: PropTypes.number.isRequired,
+  isActive: PropTypes.number.isRequired,
   changeNoteContent: PropTypes.func.isRequired,
 };
 Note.defaultProps = {

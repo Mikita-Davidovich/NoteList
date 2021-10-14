@@ -17,5 +17,3 @@ export const listOfNotes = [{
   id: 3,
 },
 ];
-
-export default listOfNotes;

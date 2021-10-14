@@ -1,18 +1,20 @@
 import React from 'react';
-import { Box } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import ButtonsEditDelete from './ButtonsEditDelete/buttonsEditDelete';
-import useStyles from '../styled';
 
-const NoteContent = ({ initialNote: { title, description, date }, editPanel, openEditPannel, onChange, onUpdate, onCancel }) => {
-  const styles = useStyles();
+import ButtonsEditDelete from './ButtonsEditDelete';
+import { Title, Description, Date, Wrapper, EditPanel } from './styled';
+
+const NoteContent = ({ initialNote: { title, description, date }, isEditPanel, openEditPannel, onChange, onUpdate, onCancel }) => {
+  const isDefaultText = title === 'Select note to display';
   return (
-    <Box className={styles.noteText}>
-      <p className={styles.title}>{title}</p>
-      <p>{description}</p>
-      <p className={styles.date}>{date}</p>
-      {title === 'Select note to display' ? null : <ButtonsEditDelete
-        editPanel={editPanel}
+    <EditPanel>
+      <Wrapper>
+        <Title>{title}</Title>
+        <Description>{description}</Description>
+        <Date>{date}</Date>
+      </Wrapper>
+      {!isDefaultText && <ButtonsEditDelete
+        isEditPanel={isEditPanel}
         openEditPannel={openEditPannel}
         title={title}
         description={description}
@@ -20,7 +22,7 @@ const NoteContent = ({ initialNote: { title, description, date }, editPanel, ope
         onUpdate={onUpdate}
         onCancel={onCancel}
       />}
-    </Box>
+    </EditPanel>
   );
 };
 
@@ -30,7 +32,7 @@ NoteContent.propTypes = {
     description: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
   }),
-  editPanel: PropTypes.bool.isRequired,
+  isEditPanel: PropTypes.bool.isRequired,
   openEditPannel: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,
