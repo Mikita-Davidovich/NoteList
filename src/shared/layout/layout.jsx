@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Header from 'shared/Header/header';
-import NavBar from 'shared/NavBar/navBar';
+import Header from 'shared/Header';
+import NavBar from 'shared/NavBar';
 
 const Layout = ({ children }) => {
   const [isNavBarOpen, setNavBarOpen] = useState(false);

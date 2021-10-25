@@ -27,7 +27,7 @@ const MyNotes = ({ setActiveNote, setSearchText, onDelete, onCreate, notActiveNo
       <Box>
         {noteContent && <NoteContent
           initialNote={initialNote}
-          editPanel={editPanel}
+          isEditPanel={isEditPanel}
           openEditPannel={openEditPannel}
           onChange={onChange}
           onUpdate={onUpdate}
@@ -59,14 +59,14 @@ const MyNotes = ({ setActiveNote, setSearchText, onDelete, onCreate, notActiveNo
   </Layout>
 );
 MyNotes.propTypes = {
-  notActiveNote: PropTypes.number.isRequired,
+  isActive: PropTypes.number.isRequired,
   changeNoteContent: PropTypes.func.isRequired,
   initialNote: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
   }),
-  editPanel: PropTypes.bool.isRequired,
+  isEditPanel: PropTypes.bool.isRequired,
   openEditPannel: PropTypes.func.isRequired,
   notesList: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,

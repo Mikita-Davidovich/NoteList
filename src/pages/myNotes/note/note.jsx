@@ -5,9 +5,9 @@ import { cutSymbols, setDateFormat } from 'utils';
 
 import { Title, Date, DefaultNote, ActiveNote } from './styled';
 
-const Note = ({ activeNote: { title, description, date, id }, notActive, changeNoteContent }) => (
+const Note = ({ activeNote: { title, description, date, id }, isActive, changeNoteContent }) => (
   <>
-    {notActive === id
+    {isActive === id
       ? <ActiveNote onClick={() => {
         changeNoteContent(title, description, date, id);
       }}
@@ -34,7 +34,7 @@ Note.propTypes = {
     date: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
   }),
-  notActive: PropTypes.number.isRequired,
+  isActive: PropTypes.number.isRequired,
   changeNoteContent: PropTypes.func.isRequired,
 };
 Note.defaultProps = {

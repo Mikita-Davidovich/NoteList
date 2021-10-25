@@ -11,7 +11,6 @@ const myNotesContainer = () => {
   const [notActiveNote, setActiveStyle] = useState(0);
   const [initialNote, setActiveNote] = useState(INITIAL_NOTE);
   const [searchText, setSearchText] = useState('');
-
   const changeNoteContent = (title, description, date, id) => {
     setActiveNote({ title, description, date, id });
     setActiveStyle(id);
@@ -93,10 +92,10 @@ const myNotesContainer = () => {
     <Wrapper>
       <MyNotes
         initialNote={initialNote}
-        notActiveNote={notActiveNote}
+        isActive={isActive}
         changeNoteContent={changeNoteContent}
         openEditPannel={openEditPannel}
-        editPanel={editPanel}
+        isEditPanel={isEditPanel}
         notesList={notesList}
         onChange={onChange}
         onUpdate={onUpdate}

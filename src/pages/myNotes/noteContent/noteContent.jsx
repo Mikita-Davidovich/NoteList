@@ -6,14 +6,16 @@ import { setDateFormat } from 'utils';
 import ButtonsEditDelete from './ButtonsEditDelete';
 import { Title, Description, Date, Wrapper, EditPanel } from './styled';
 
+
 const NoteContent = ({ initialNote: { title, description, date }, editPanel, openEditPannel, onChange, onUpdate, onCancel, closeNoteContent, onDelete }) => (
+  const isDefaultText = title === 'Select note to display';
   <EditPanel>
     <Wrapper>
       <Title>{title}</Title>
       <Description>{description}</Description>
       <Date>{setDateFormat(date)}</Date>
     </Wrapper>
-    {title === 'Select note to display' ? null : <ButtonsEditDelete
+    {!isDefaultText && <ButtonsEditDelete
       editPanel={editPanel}
       openEditPannel={openEditPannel}
       title={title}
@@ -33,7 +35,7 @@ NoteContent.propTypes = {
     description: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
   }),
-  editPanel: PropTypes.bool.isRequired,
+  isEditPanel: PropTypes.bool.isRequired,
   openEditPannel: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,
