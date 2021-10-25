@@ -5,7 +5,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 import { ButtonsContainer, StyledButton } from './styled';
 
-const ButtonsEditDelete = ({ openEditPannel, closeNoteContent, deleteNote }) => (
+const ButtonsEditDelete = ({ openEditPannel, closeNoteContent, onDelete }) => (
   <ButtonsContainer>
     <StyledButton
       variant="contained"
@@ -17,7 +17,7 @@ const ButtonsEditDelete = ({ openEditPannel, closeNoteContent, deleteNote }) => 
     >
       <EditIcon />
     </StyledButton>
-    <StyledButton variant="contained" color="primary" onClick={deleteNote}>
+    <StyledButton variant="contained" color="primary" onClick={onDelete}>
       <DeleteIcon />
     </StyledButton>
   </ButtonsContainer>
@@ -25,7 +25,7 @@ const ButtonsEditDelete = ({ openEditPannel, closeNoteContent, deleteNote }) => 
 ButtonsEditDelete.propTypes = {
   openEditPannel: PropTypes.func.isRequired,
   closeNoteContent: PropTypes.func.isRequired,
-  deleteNote: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default ButtonsEditDelete;

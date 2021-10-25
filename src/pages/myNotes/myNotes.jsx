@@ -2,18 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Box } from '@material-ui/core';
 
-import Layout from 'shared/Layout/layout';
+import Layout from 'shared/Layout';
 
 import EditNotesPanel from './EditNotesPanel';
 import Note from './Note';
 import NoteContent from './NoteContent';
-import { NotesWrapper, AddNotesButton } from './styled';
+import { NotesWrapper } from './styled';
 import NoteCreationPanel from './NoteCreationPanel';
+import AuxiliaryPanel from 'shared/AuxiliaryPanel/auxiliaryPanel';
 
-const MyNotes = ({ deleteNote, onCreate, newNoteOnChange, newNote, notActiveNote, changeNoteContent, initialNote, editPanel, openEditPannel, notesList, onChange, onUpdate, onCancel, createNewNote, createPanel, noteContent, closeNoteContent, openClosePannel }) => (
+const MyNotes = ({ setActiveNote, setSearchText, onDelete, onCreate, notActiveNote, changeNoteContent, initialNote, editPanel, openEditPannel, notesList, onChange, onUpdate, onCancel, createNewNote, createPanel, noteContent, closeNoteContent, openClosePannel }) => (
   <Layout>
     <NotesWrapper>
       <Box>
+        <AuxiliaryPanel
+          setSearchText={setSearchText}
+          createNewNote={createNewNote}
+          closeNoteContent={closeNoteContent}
+          openEditPannel={openEditPannel}
+          setActiveNote={setActiveNote}
+        />
         {notesList.map((note) => <Note notActive={notActiveNote} changeNoteContent={changeNoteContent} activeNote={note} key={note.id} />)}
       </Box>
       <Box>
@@ -25,7 +33,7 @@ const MyNotes = ({ deleteNote, onCreate, newNoteOnChange, newNote, notActiveNote
           onUpdate={onUpdate}
           onCancel={onCancel}
           closeNoteContent={closeNoteContent}
-          deleteNote={deleteNote}
+          onDelete={onDelete}
         />}
         {editPanel && <EditNotesPanel
           editPanel={editPanel}
@@ -39,23 +47,14 @@ const MyNotes = ({ deleteNote, onCreate, newNoteOnChange, newNote, notActiveNote
         />}
       </Box>
       {createPanel && <NoteCreationPanel
-        title={newNote.title}
-        description={newNote.description}
-        date={newNote.date}
-        newNoteOnChange={newNoteOnChange}
+        title={initialNote.title}
+        description={initialNote.description}
+        date={initialNote.date}
         onUpdate={onUpdate}
         openClosePannel={openClosePannel}
         onCreate={onCreate}
+        onChange={onChange}
       />}
-      <AddNotesButton
-        onClick={() => {
-          createNewNote(true);
-          closeNoteContent(false);
-          openEditPannel(false);
-        }}
-      >
-        +Add note
-      </AddNotesButton>
     </NotesWrapper>
   </Layout>
 );
@@ -63,11 +62,6 @@ MyNotes.propTypes = {
   notActiveNote: PropTypes.number.isRequired,
   changeNoteContent: PropTypes.func.isRequired,
   initialNote: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-  }),
-  newNote: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
@@ -81,7 +75,6 @@ MyNotes.propTypes = {
     id: PropTypes.number.isRequired,
   })),
   onChange: PropTypes.func.isRequired,
-  newNoteOnChange: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
   createNewNote: PropTypes.func.isRequired,
@@ -90,11 +83,12 @@ MyNotes.propTypes = {
   closeNoteContent: PropTypes.func.isRequired,
   openClosePannel: PropTypes.func.isRequired,
   onCreate: PropTypes.func.isRequired,
-  deleteNote: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  setSearchText: PropTypes.func.isRequired,
+  setActiveNote: PropTypes.func.isRequired,
 };
 MyNotes.defaultProps = {
   initialNote: {},
   notesList: [],
-  newNote: {},
 };
 export default MyNotes;

@@ -25,4 +25,5 @@ export const EditPanel = styled('div')({
   padding: '25px',
   borderRadius: '20px',
   display: 'flex',
+  marginTop: '48px',
 });

@@ -1,15 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { setDateFormat } from 'utils';
+
 import ButtonsEditDelete from './ButtonsEditDelete';
 import { Title, Description, Date, Wrapper, EditPanel } from './styled';
 
-const NoteContent = ({ initialNote: { title, description, date }, editPanel, openEditPannel, onChange, onUpdate, onCancel, closeNoteContent, deleteNote }) => (
+const NoteContent = ({ initialNote: { title, description, date }, editPanel, openEditPannel, onChange, onUpdate, onCancel, closeNoteContent, onDelete }) => (
   <EditPanel>
     <Wrapper>
       <Title>{title}</Title>
       <Description>{description}</Description>
-      <Date>{date}</Date>
+      <Date>{setDateFormat(date)}</Date>
     </Wrapper>
     {title === 'Select note to display' ? null : <ButtonsEditDelete
       editPanel={editPanel}
@@ -20,7 +22,7 @@ const NoteContent = ({ initialNote: { title, description, date }, editPanel, ope
       onUpdate={onUpdate}
       onCancel={onCancel}
       closeNoteContent={closeNoteContent}
-      deleteNote={deleteNote}
+      onDelete={onDelete}
     />}
   </EditPanel>
 );
@@ -37,7 +39,7 @@ NoteContent.propTypes = {
   onUpdate: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
   closeNoteContent: PropTypes.func.isRequired,
-  deleteNote: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 NoteContent.defaultProps = {

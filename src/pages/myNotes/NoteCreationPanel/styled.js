@@ -8,6 +8,7 @@ export const InputsContainer = styled('div')({
   borderRadius: '20px',
   width: '510px',
   height: '100%',
+  marginTop: '48px',
 });
 
 export const ButtonsUpdateExit = styled('div')({

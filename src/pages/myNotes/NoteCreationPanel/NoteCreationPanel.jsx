@@ -2,14 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { TextField, Button } from '@material-ui/core';
 
+import DateTimePickerForPannel from 'shared/DateTimePickerForPannel';
+
 import { InputsContainer, ButtonsUpdateExit, Title } from './styled';
 
-const NoteCreationPanel = ({ newNoteOnChange, openClosePannel, title, description, date, onCreate }) => (
+const NoteCreationPanel = ({ openClosePannel, title, description, date, onCreate, onChange }) => (
   <InputsContainer>
     <Title>Let`s start create new Note!</Title>
-    <TextField id="filled-basic" label="Title" value={title} variant="filled" name="title" onChange={(e) => newNoteOnChange(e)} />
-    <TextField id="filled-basic" label="Description" value={description} variant="filled" name="description" onChange={(e) => newNoteOnChange(e)} />
-    <TextField id="filled-basic" label="Date" value={date} variant="filled" name="date" onChange={(e) => newNoteOnChange(e)} />
+    <TextField id="filled-basic" label="Title" value={title} variant="filled" name="title" onChange={onChange} />
+    <TextField id="filled-basic" label="Description" value={description} variant="filled" name="description" onChange={onChange} />
+    <DateTimePickerForPannel date={date} onChange={onChange} />
     <ButtonsUpdateExit>
       <Button
         variant="contained"
@@ -25,13 +27,14 @@ const NoteCreationPanel = ({ newNoteOnChange, openClosePannel, title, descriptio
     </ButtonsUpdateExit>
   </InputsContainer>
 );
+
 NoteCreationPanel.propTypes = {
-  newNoteOnChange: PropTypes.func.isRequired,
   openClosePannel: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   onCreate: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default NoteCreationPanel;

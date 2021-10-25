@@ -1,32 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
-import { listOfNotes } from 'assets/data';
+import { INITIAL_NOTE } from 'assets/data';
+import { updateNote, createNote, deleteNote, getAllNotes, useGetNotes } from 'api/notesHooks';
+import { filteredNotes } from 'utils';
 
 import { Wrapper } from './styled';
 import MyNotes from './myNotes';
-import { useQuery } from 'react-query';
-import axios from 'axios';
 
 const myNotesContainer = () => {
-  const getNotes = async () => {
-    const response = await axios.get('http://localhost:3008/notes');
-    return response.data;
-  };
-  const { data: noteList, status } = useQuery('notes', getNotes);
-  const TEXT = 'Select note to display';
   const [notActiveNote, setActiveStyle] = useState(0);
-  const [initialNote, setActiveNote] = useState({
-    title: TEXT,
-    description: '',
-    date: '',
-    id: null,
-  });
-
-  const [newNote, setNewNote] = useState({
-    title: '',
-    description: '',
-    date: '',
-  });
+  const [initialNote, setActiveNote] = useState(INITIAL_NOTE);
+  const [searchText, setSearchText] = useState('');
 
   const changeNoteContent = (title, description, date, id) => {
     setActiveNote({ title, description, date, id });
@@ -52,11 +36,8 @@ const myNotesContainer = () => {
     const { name, value } = e.target;
     setActiveNote((note) => ({ ...note, [name]: value }));
   };
-  const newNoteOnChange = (e) => {
-    const { name, value } = e.target;
-    setNewNote((note) => ({ ...note, [name]: value }));
-  };
 
+  const { data: noteList, isLoading } = useGetNotes();
   const [notesList, setNotesList] = useState(noteList);
 
   const onUpdate = () => {
@@ -72,28 +53,22 @@ const myNotesContainer = () => {
       description: noteToEdit.description,
       date: noteToEdit.date,
     };
-    axios.put(`http://localhost:3008/notes/${noteToEdit.id}`, modifiedNote);
+    updateNote(noteToEdit, modifiedNote);
   };
 
   const onCreate = () => {
-    const note = {
-      title: newNote.title,
-      description: newNote.description,
-      date: newNote.date,
-    };
-    axios.post('http://localhost:3008/notes/', note);
+    createNote(initialNote);
+    setActiveStyle(0);
+    setActiveNote(initialNote);
+    setNotesList(notesList);
   };
 
-  const deleteNote = () => {
+  const onDelete = () => {
     const noteToEdit = notesList.filter((note) => note.id === initialNote.id)[0];
-    axios.delete(`http://localhost:3008/notes/${noteToEdit.id}`);
-    setActiveNote({
-      title: TEXT,
-      description: '',
-      date: '',
-      id: null,
-    });
+    deleteNote(noteToEdit);
+    setActiveNote(INITIAL_NOTE);
   };
+
   const onCancel = () => {
     const { title, description, date, id } = notesList.filter((note) => note.id === initialNote.id)[0];
     setActiveNote({ title, description, date, id });
@@ -105,7 +80,15 @@ const myNotesContainer = () => {
     closeNoteContent(true);
     createNewNote(false);
   };
-  useEffect(() => setNotesList(noteList));
+
+  useEffect(() => {
+    setNotesList(noteList);
+  }, [noteList]);
+
+  useEffect(() => {
+    filteredNotes(noteList || [], searchText);
+  }, [noteList]);
+
   return (
     <Wrapper>
       <MyNotes
@@ -123,10 +106,11 @@ const myNotesContainer = () => {
         noteContent={noteContent}
         closeNoteContent={closeNoteContent}
         openClosePannel={openClosePannel}
-        newNote={newNote}
-        newNoteOnChange={newNoteOnChange}
         onCreate={onCreate}
-        deleteNote={deleteNote}
+        onDelete={onDelete}
+        setSearchText={setSearchText}
+        searchText={searchText}
+        setActiveNote={setActiveNote}
       />
     </Wrapper>
   );
