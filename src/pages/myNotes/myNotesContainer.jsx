@@ -8,7 +8,7 @@ import { Wrapper } from './styled';
 import MyNotes from './myNotes';
 
 const myNotesContainer = () => {
-  const [notActiveNote, setActiveStyle] = useState(0);
+  const [isActive, setActiveStyle] = useState(0);
   const [initialNote, setActiveNote] = useState(INITIAL_NOTE);
   const [searchText, setSearchText] = useState('');
   const changeNoteContent = (title, description, date, id) => {
@@ -16,7 +16,7 @@ const myNotesContainer = () => {
     setActiveStyle(id);
   };
 
-  const [editPanel, setEditPanel] = useState(false);
+  const [isEditPanel, setEditPanel] = useState(false);
   const openEditPannel = (flag) => {
     setEditPanel(flag);
   };
@@ -82,9 +82,6 @@ const myNotesContainer = () => {
 
   useEffect(() => {
     setNotesList(noteList);
-  }, [noteList]);
-
-  useEffect(() => {
     filteredNotes(noteList || [], searchText);
   }, [noteList]);
 

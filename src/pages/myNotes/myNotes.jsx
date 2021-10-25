@@ -11,7 +11,7 @@ import { NotesWrapper } from './styled';
 import NoteCreationPanel from './NoteCreationPanel';
 import AuxiliaryPanel from 'shared/AuxiliaryPanel/auxiliaryPanel';
 
-const MyNotes = ({ setActiveNote, setSearchText, onDelete, onCreate, notActiveNote, changeNoteContent, initialNote, editPanel, openEditPannel, notesList, onChange, onUpdate, onCancel, createNewNote, createPanel, noteContent, closeNoteContent, openClosePannel }) => (
+const MyNotes = ({ setActiveNote, setSearchText, onDelete, onCreate, isActive, changeNoteContent, initialNote, isEditPanel, openEditPannel, notesList, onChange, onUpdate, onCancel, createNewNote, createPanel, noteContent, closeNoteContent, openClosePannel }) => (
   <Layout>
     <NotesWrapper>
       <Box>
@@ -22,7 +22,7 @@ const MyNotes = ({ setActiveNote, setSearchText, onDelete, onCreate, notActiveNo
           openEditPannel={openEditPannel}
           setActiveNote={setActiveNote}
         />
-        {notesList.map((note) => <Note notActive={notActiveNote} changeNoteContent={changeNoteContent} activeNote={note} key={note.id} />)}
+        {notesList.map((note) => <Note isActive={isActive} changeNoteContent={changeNoteContent} activeNote={note} key={note.id} />)}
       </Box>
       <Box>
         {noteContent && <NoteContent
@@ -35,8 +35,8 @@ const MyNotes = ({ setActiveNote, setSearchText, onDelete, onCreate, notActiveNo
           closeNoteContent={closeNoteContent}
           onDelete={onDelete}
         />}
-        {editPanel && <EditNotesPanel
-          editPanel={editPanel}
+        {isEditPanel && <EditNotesPanel
+          editPanel={isEditPanel}
           onChange={onChange}
           date={initialNote.date}
           title={initialNote.title}

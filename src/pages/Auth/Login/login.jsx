@@ -5,7 +5,7 @@ import { Form, Formik } from 'formik';
 
 import TextFieldWrapper from 'shared/FormsUI/TextField/textFieldWrapper';
 import { VALIDATION_SHEMA_LOGIN } from 'assets/validationShema';
-import ButtonWrapper from 'shared/FormsUI/Button';
+import ButtonWrapper from 'shared/FormsUI/button';
 import { PATH_REGISTRATION } from 'assets/paths';
 
 import { Title, StyledContainer, Wrapper, LinkWrapperLogin, NavLinkLogin } from '../styled';

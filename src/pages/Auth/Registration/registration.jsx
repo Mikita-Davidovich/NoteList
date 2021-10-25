@@ -5,8 +5,8 @@ import { Grid } from '@material-ui/core';
 
 import { VALIDATION_SHEMA_REGISTRATION } from 'assets/validationShema';
 import TextFieldWrapper from 'shared/FormsUI/TextField';
-import DateTimePicker from 'shared/FormsUI/DateTimePicker';
-import ButtonWrapper from 'shared/FormsUI/Button';
+import DateTimePicker from 'shared/FormsUI/dateTimePicker';
+import ButtonWrapper from 'shared/FormsUI/button';
 import { PATH_LOGIN } from 'assets/paths';
 
 import { Title, Wrapper, StyledContainer, LinkWrapper, NavLinkLogin } from '../styled';
