@@ -1,30 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { setDateFormat } from 'utils';
+
 import ButtonsEditDelete from './ButtonsEditDelete';
 import { Title, Description, Date, Wrapper, EditPanel } from './styled';
 
-const NoteContent = ({ initialNote: { title, description, date }, isEditPanel, openEditPannel, onChange, onUpdate, onCancel }) => {
+
+const NoteContent = ({ initialNote: { title, description, date }, editPanel, openEditPannel, onChange, onUpdate, onCancel, closeNoteContent, onDelete }) => (
   const isDefaultText = title === 'Select note to display';
-  return (
-    <EditPanel>
-      <Wrapper>
-        <Title>{title}</Title>
-        <Description>{description}</Description>
-        <Date>{date}</Date>
-      </Wrapper>
-      {!isDefaultText && <ButtonsEditDelete
-        isEditPanel={isEditPanel}
-        openEditPannel={openEditPannel}
-        title={title}
-        description={description}
-        onChange={onChange}
-        onUpdate={onUpdate}
-        onCancel={onCancel}
-      />}
-    </EditPanel>
-  );
-};
+  <EditPanel>
+    <Wrapper>
+      <Title>{title}</Title>
+      <Description>{description}</Description>
+      <Date>{setDateFormat(date)}</Date>
+    </Wrapper>
+    {!isDefaultText && <ButtonsEditDelete
+      editPanel={editPanel}
+      openEditPannel={openEditPannel}
+      title={title}
+      description={description}
+      onChange={onChange}
+      onUpdate={onUpdate}
+      onCancel={onCancel}
+      closeNoteContent={closeNoteContent}
+      onDelete={onDelete}
+    />}
+  </EditPanel>
+);
 
 NoteContent.propTypes = {
   initialNote: PropTypes.shape({
@@ -37,6 +40,8 @@ NoteContent.propTypes = {
   onChange: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
+  closeNoteContent: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 NoteContent.defaultProps = {

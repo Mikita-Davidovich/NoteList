@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { cutSymbols } from 'utils';
+import { cutSymbols, setDateFormat } from 'utils';
 
 import { Title, Date, DefaultNote, ActiveNote } from './styled';
 
@@ -14,7 +14,7 @@ const Note = ({ activeNote: { title, description, date, id }, isActive, changeNo
       >
         <Title>{title}</Title>
         { description && <p>{cutSymbols(description)}</p>}
-        <Date>{date}</Date>
+        <Date>{setDateFormat(date)}</Date>
       </ActiveNote>
       : <DefaultNote onClick={() => {
         changeNoteContent(title, description, date, id);
@@ -22,7 +22,7 @@ const Note = ({ activeNote: { title, description, date, id }, isActive, changeNo
       >
         <Title>{title}</Title>
         { description && <p>{cutSymbols(description)}</p>}
-        <Date>{date}</Date>
+        <Date>{setDateFormat(date)}</Date>
       </DefaultNote>}
   </>
 );

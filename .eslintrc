@@ -11,6 +11,9 @@
     "react/jsx-closed-tag-location": "off",
     "no-unused-vars":"off",
     "import/no-unresolved": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "import/order": "off",
+    "react/jsx-props-no-spreading": "off",
     "react/jsx-closing-tag-location": "off"
   },
   "env": {
