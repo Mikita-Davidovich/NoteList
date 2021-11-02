@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { INITIAL_NOTE } from 'assets/data';
-import { updateNote, createNote, deleteNote, getAllNotes, useGetNotes } from 'api/notesHooks';
+import { updateNote, createNote, deleteNote, useGetNotes } from 'api/notesHooks';
 import { filteredNotes } from 'utils';
 
 import { Wrapper } from './styled';
@@ -36,7 +36,7 @@ const myNotesContainer = () => {
     setActiveNote((note) => ({ ...note, [name]: value }));
   };
 
-  const { data: noteList, isLoading } = useGetNotes();
+  const { data: noteList } = useGetNotes();
   const [notesList, setNotesList] = useState(noteList);
 
   const onUpdate = () => {
@@ -81,9 +81,8 @@ const myNotesContainer = () => {
   };
 
   useEffect(() => {
-    setNotesList(noteList);
-    filteredNotes(noteList || [], searchText);
-  }, [noteList]);
+    setNotesList(filteredNotes(noteList || [], searchText));
+  }, [noteList, searchText]);
 
   return (
     <Wrapper>

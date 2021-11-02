@@ -25,7 +25,7 @@ export const createNote = async (newNote) => {
     date: newNote.date,
   };
   const response = await api.post('notes', request);
-  console.log(response.data);
+  return response.data;
 };
 
 export const deleteNote = async (noteToEdit) => {
